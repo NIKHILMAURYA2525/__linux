@@ -1,3 +1,14 @@
-• Developed a Linux kernel module to register multiple platform devices with custom metadata (size, permissions, serial number) using `platform_add_devices()` and `platform_data`.
-• Implemented device lifecycle management with release callbacks and structured initialization/cleanup routines.
-• Demonstrated understanding of platform driver binding and board-level device provisioning in Embedded Linux.
+# Pseudo Character Device Driver
+A simple Linux kernel module implementing a pseudo character driver.
+## Features
+- Supports `open`, `release`, `read`, `write`, `llseek`
+- Uses 512-byte buffer as device memory
+- Creates `/dev/pcd` via sysfs class
+## Build & Run
+```bash
+make
+sudo insmod pcd_driver.ko
+ls -l /dev/pcd
+echo "Hello" > /dev/pcd
+cat /dev/pcd
+sudo rmmod pcd_driver
